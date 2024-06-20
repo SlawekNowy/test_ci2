@@ -23,7 +23,7 @@ jobs:
     - name: Download Pragma (Windows)
       if: runner.os == 'Windows'
       run: |
-        $repo = $env:GITHUB_REPOSITORY
+        $repo = "Silverlan/pragma"
         Invoke-WebRequest -Uri "https://github.com/$repo/releases/download/nightly/pragma-win64.zip" -OutFile "pragma-win64.zip"
         Expand-Archive -Path "pragma-win64.zip" -DestinationPath "pragma"
 
