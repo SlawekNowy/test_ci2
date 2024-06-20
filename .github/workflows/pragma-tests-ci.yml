@@ -34,6 +34,9 @@ jobs:
         mkdir pragma
         tar -xzvf pragma-lin64.tar.gz -C pragma
 
+    - uses: mxschmitt/action-tmate@v3.18
+      name: CI
+
     - name: Run Test Scripts
       shell: bash
       run: |
