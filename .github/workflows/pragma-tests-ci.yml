@@ -34,6 +34,14 @@ jobs:
         mkdir pragma
         tar -xzvf pragma-lin64.tar.gz -C pragma
 
+    - name: Download Dummy Audio
+      run: |
+        cd pragma/modules/audio
+        mkdir dummy
+        cd dummy
+        wget https://pragma-engine.com/share/pr_audio_dummy.zip
+        tar -xzvf pragma-lin64.tar.gz -C .
+
     - uses: mxschmitt/action-tmate@v3.18
       name: CI
 
