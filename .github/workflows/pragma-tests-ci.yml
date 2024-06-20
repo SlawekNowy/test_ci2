@@ -30,7 +30,7 @@ jobs:
     - name: Download Pragma (Linux)
       if: runner.os == 'Linux'
       run: |
-        wget https://github.com/$GITHUB_REPOSITORY/releases/download/nightly/pragma-lin64.tar.gz
+        wget https://github.com/Silverlan/pragma/releases/download/nightly/pragma-lin64.tar.gz
         mkdir pragma
         tar -xzvf pragma-lin64.tar.gz -C pragma
 
