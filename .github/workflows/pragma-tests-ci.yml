@@ -39,8 +39,8 @@ jobs:
         cd pragma/modules/audio
         mkdir dummy
         cd dummy
-        wget https://pragma-engine.com/share/pr_audio_dummy.zip
-        tar -xzvf pragma-lin64.tar.gz -C .
+        Invoke-WebRequest -Uri "https://pragma-engine.com/share/pr_audio_dummy.zip" -OutFile "pr_audio_dummy.zip"
+        Expand-Archive -Path "pr_audio_dummy.zip" -DestinationPath "."
 
     - uses: mxschmitt/action-tmate@v3.18
       name: CI
