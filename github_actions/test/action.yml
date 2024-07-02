@@ -1,0 +1,45 @@
+name: Run Pragma
+description: 'Run Pragma'
+inputs:
+  lua-code:
+    description: 'Lua Code'
+    required: true
+    default: ''
+runs:
+  using: "composite"
+  steps:
+    - name: Download Pragma (Windows)
+      if: runner.os == 'Windows'
+      run: |
+        if (Test-Path -Path "pragma") {
+          echo "Pragma already exists. Skipping download."
+        } else {
+          $repo = $env:GITHUB_REPOSITORY
+          Invoke-WebRequest -Uri "https://github.com/$repo/releases/download/nightly/pragma-win64.zip" -OutFile "pragma-win64.zip"
+          Expand-Archive -Path "pragma-win64.zip" -DestinationPath "pragma"
+        }
+
+    - name: Download Pragma (Linux)
+      if: runner.os == 'Linux'
+      run: |
+        if [ -d "pragma" ]; then
+          echo "Pragma already exists. Skipping download."
+        else
+          wget https://github.com/$GITHUB_REPOSITORY/releases/download/nightly/pragma-lin64.tar.gz
+          mkdir pragma
+          tar -xzvf pragma-lin64.tar.gz -C pragma
+        fi
+
+    - name: Write Lua Code to File
+      run: |
+        mkdir -p pragma/lua
+        echo "${{ inputs.lua-code }}" > pragma/lua/test_script.lua
+
+    - name: Run Test Scripts
+      shell: bash
+      run: |
+        cd "pragma"
+        if [ "$RUNNER_OS" == "Linux" ]; then
+          chmod +x ./pragma
+        fi
+        ./pragma -cli -luaext -log 2 2 +map "test_physics" +"lua_exec lua/test_script.lua"
