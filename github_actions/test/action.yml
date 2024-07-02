@@ -10,6 +10,7 @@ runs:
   steps:
     - name: Download Pragma (Windows)
       if: runner.os == 'Windows'
+      shell: pwsh
       run: |
         if (Test-Path -Path "pragma") {
           echo "Pragma already exists. Skipping download."
@@ -21,6 +22,7 @@ runs:
 
     - name: Download Pragma (Linux)
       if: runner.os == 'Linux'
+      shell: bash
       run: |
         if [ -d "pragma" ]; then
           echo "Pragma already exists. Skipping download."
@@ -31,6 +33,7 @@ runs:
         fi
 
     - name: Write Lua Code to File
+      shell: bash
       run: |
         mkdir -p pragma/lua
         echo "${{ inputs.lua-code }}" > pragma/lua/test_script.lua
