@@ -38,12 +38,19 @@ runs:
         mkdir -p pragma/lua
         echo "${{ inputs.lua-code }}" > pragma/lua/test_script.lua
 
+
     - name: Run Test Scripts
-      shell: bash
+      shell: pwsh
       run: |
         cd "pragma"
-        if [ "$RUNNER_OS" == "Linux" ]; then
-          chmod +x ./pragma
-        fi
         ./pragma -cli -luaext -log 2 2 +map "test_physics" +"lua_exec tests/ci_runner_tests.lua"
+
+    #- name: Run Test Scripts
+    #  shell: bash
+    #  run: |
+    #    cd "pragma"
+    #    if [ "$RUNNER_OS" == "Linux" ]; then
+    #      chmod +x ./pragma
+    #    fi
+    #    ./pragma -cli -luaext -log 2 2 +map "test_physics" +"lua_exec tests/ci_runner_tests.lua"
       #./pragma -cli -luaext -log 2 2 +map "empty" +"lua_run print('test')" +"lua_exec test_script.lua" +"lua_run print('test2')" +"lua_run exit"
