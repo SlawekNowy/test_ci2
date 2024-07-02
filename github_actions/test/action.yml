@@ -45,4 +45,5 @@ runs:
         if [ "$RUNNER_OS" == "Linux" ]; then
           chmod +x ./pragma
         fi
-        ./pragma -cli -luaext -log 2 2 +map "empty" +"lua_run print('test')" +"lua_exec test_script.lua" +"lua_run print('test2')" +"lua_run exit"
+        ./pragma -cli -luaext -log 2 2 +map "test_physics" +"lua_exec tests/ci_runner_tests.lua"
+      #./pragma -cli -luaext -log 2 2 +map "empty" +"lua_run print('test')" +"lua_exec test_script.lua" +"lua_run print('test2')" +"lua_run exit"
