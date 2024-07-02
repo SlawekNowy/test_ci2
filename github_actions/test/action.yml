@@ -15,7 +15,7 @@ runs:
         if (Test-Path -Path "pragma") {
           echo "Pragma already exists. Skipping download."
         } else {
-          $repo = $env:GITHUB_REPOSITORY
+          $repo = "Silverlan/pragma"
           Invoke-WebRequest -Uri "https://github.com/$repo/releases/download/nightly/pragma-win64.zip" -OutFile "pragma-win64.zip"
           Expand-Archive -Path "pragma-win64.zip" -DestinationPath "pragma"
         }
@@ -27,7 +27,7 @@ runs:
         if [ -d "pragma" ]; then
           echo "Pragma already exists. Skipping download."
         else
-          wget https://github.com/$GITHUB_REPOSITORY/releases/download/nightly/pragma-lin64.tar.gz
+          wget https://github.com/Silverlan/pragma/releases/download/nightly/pragma-lin64.tar.gz
           mkdir pragma
           tar -xzvf pragma-lin64.tar.gz -C pragma
         fi
