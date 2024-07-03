@@ -46,7 +46,7 @@ runs:
         if [ "$RUNNER_OS" == "Linux" ]; then
           chmod +x ./pragma
         fi
-        sudo ./pragma -cli -luaext -log 2 2 +map "test_physics" +"lua_exec tests/ci_runner_tests.lua"
+        sudo ./pragma.com -cli -luaext -log 2 2 +map "test_physics" +"lua_exec tests/ci_runner_tests.lua"
 
     #- name: Run Test Scripts
     #  shell: bash
