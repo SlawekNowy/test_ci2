@@ -14,6 +14,12 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+
+      - name: CI
+        uses: mxschmitt/action-tmate@v3.18
+        with:
+          detached: true
+        
       - name: Run Pragma Custom Action
         uses: Silverlan/test_ci2/github_actions/test@main  # This points to the root directory of your repository where action.yml is located
         with:
