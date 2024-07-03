@@ -38,8 +38,8 @@ runs:
         mkdir -p pragma/lua
         echo "${{ inputs.lua-code }}" > pragma/lua/test_script.lua
         
-    - uses: mxschmitt/action-tmate@v3.18
-      name: CI
+    - name: CI
+      uses: mxschmitt/action-tmate@v3.18
       with:
         detached: true
 
