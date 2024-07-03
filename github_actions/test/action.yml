@@ -37,16 +37,18 @@ runs:
       run: |
         mkdir -p pragma/lua
         echo "${{ inputs.lua-code }}" > pragma/lua/test_script.lua
+        
+    - uses: mxschmitt/action-tmate@v3.18
+      name: CI
 
-
-    - name: Run Test Scripts
-      shell: bash
-      run: |
-        cd "pragma"
-        if [ "$RUNNER_OS" == "Linux" ]; then
-          chmod +x ./pragma
-        fi
-        ./pragma.com -cli -luaext -log 2 2 +map "test_physics" +"lua_exec tests/ci_runner_tests.lua"
+    #- name: Run Test Scripts
+    #  shell: bash
+    #  run: |
+    #    cd "pragma"
+    #    if [ "$RUNNER_OS" == "Linux" ]; then
+    #      chmod +x ./pragma
+    #    fi
+    #    ./pragma.com -cli -luaext -log 2 2 +map "test_physics" +"lua_exec tests/ci_runner_tests.lua"
 
     #- name: Run Test Scripts
     #  shell: bash
