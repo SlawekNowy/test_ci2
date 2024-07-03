@@ -6,7 +6,6 @@ inputs:
     required: true
     default: ''
 runs:
-  using: "composite"
   steps:
     - name: Download Pragma (Windows)
       if: runner.os == 'Windows'
