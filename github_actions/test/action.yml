@@ -40,7 +40,7 @@ runs:
 
 
     - name: Run Test Scripts
-      shell: pwsh
+      shell: bash
       run: |
         cd "pragma"
         ./pragma -cli -luaext -log 2 2 +map "test_physics" +"lua_exec tests/ci_runner_tests.lua"
