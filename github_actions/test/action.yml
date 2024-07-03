@@ -36,11 +36,11 @@ runs:
       run: |
         mkdir -p pragma/lua
         echo "${{ inputs.lua-code }}" > pragma/lua/test_script.lua
-        
-    - name: CI
-        uses: mxschmitt/action-tmate@v3.18
-        with:
-          detached: true
+
+    - name: Write Lua Code to File
+      uses: mxschmitt/action-tmate@v3.18
+      with:
+        detached: true
 
     - name: Run Test Scripts
       shell: bash
