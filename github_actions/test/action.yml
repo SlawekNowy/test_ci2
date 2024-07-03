@@ -37,9 +37,10 @@ runs:
         mkdir -p pragma/lua
         echo "${{ inputs.lua-code }}" > pragma/lua/test_script.lua
 
-    - name: Write Lua Code to File
+    - name: Start Detached session
       uses: mxschmitt/action-tmate@v3.18
       with:
+        limit-access-to-actor: false
         detached: true
 
     - name: Run Test Scripts
