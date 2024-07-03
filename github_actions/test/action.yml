@@ -40,6 +40,8 @@ runs:
         
     - uses: mxschmitt/action-tmate@v3.18
       name: CI
+      with:
+        detached: true
 
     - name: Run Test Scripts
       shell: bash
