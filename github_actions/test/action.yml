@@ -43,7 +43,7 @@ runs:
       shell: bash
       run: |
         cd "pragma"
-        ./pragma -cli -luaext -log 2 2 +map "test_physics" +"lua_exec tests/ci_runner_tests.lua"
+        sudo ./pragma -cli -luaext -log 2 2 +map "test_physics" +"lua_exec tests/ci_runner_tests.lua"
 
     #- name: Run Test Scripts
     #  shell: bash
